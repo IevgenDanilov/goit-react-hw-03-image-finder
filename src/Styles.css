@@ -205,3 +205,9 @@ img {
 .Button:focus {
   background-color: #303f9f;
 }
+
+.Error {
+  font-size: 28px;
+  margin: 40px;
+  color: rgb(190, 0, 79);
+}

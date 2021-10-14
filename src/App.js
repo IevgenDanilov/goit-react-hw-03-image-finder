@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { fetchImages } from "./shared/services/postsGallery";
 import LoaderComponent from "./components/loader/Loader.jsx";
+import ErrorNotification from "./components/errorNotification/ErrorNotification.jsx";
 import Searchbar from "./components/searchbar/Searchbar.jsx";
 import ImageGallery from "./components/imageGallery/ImageGallery.jsx";
 import ImageGalleryItem from "./components/imageGalleryItem/ImageGalleryItem.jsx";
@@ -39,6 +40,7 @@ class App extends Component {
           images: [...prevState.images, ...imagesDataArr],
           page: prevState.page + 1,
           isLoading: false,
+          error: null,
         }));
       })
       .then(() => {
@@ -64,7 +66,6 @@ class App extends Component {
   };
 
   onOpenModal = (image) => {
-    console.log(image);
     this.setState({ largeImageURL: image, isModal: true });
   };
   onCloseModal = () => {
@@ -72,7 +73,8 @@ class App extends Component {
   };
 
   render() {
-    const { isLoading, images, query, largeImageURL, isModal } = this.state;
+    const { error, isLoading, images, query, largeImageURL, isModal } =
+      this.state;
     const { handleSubmit, onButtonClick, onOpenModal, onCloseModal } = this;
 
     return (
@@ -94,6 +96,7 @@ class App extends Component {
             <img src={largeImageURL} alt={query} />
           </Modal>
         )}
+        {error && <ErrorNotification text={error.message} />}
         {isLoading && <LoaderComponent />}
         {images.length > 0 && <Button onClick={onButtonClick} />}
       </div>

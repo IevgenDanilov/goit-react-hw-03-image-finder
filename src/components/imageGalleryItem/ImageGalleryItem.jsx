@@ -2,8 +2,6 @@ import React from "react";
 // import PropTypes from "prop-types";
 
 const ImageGalleryItem = ({ images, query, onOpenModal }) => {
-  console.log(images);
-  // console.log(query);
   return images.map(({ id, webformatURL, largeImageURL }) => (
     <li
       key={id}

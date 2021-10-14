@@ -1,3 +1,4 @@
+// import React from "react";
 import { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -31,8 +32,8 @@ class Searchbar extends Component {
             type="text"
             value={inputValue}
             onChange={handleChange}
-            // autocomplete="off"
-            // autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
           />
         </form>
