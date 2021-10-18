@@ -68,7 +68,10 @@ class App extends Component {
   onOpenModal = (image) => {
     this.setState({ largeImageURL: image, isModal: true });
   };
-  onCloseModal = () => {
+  onCloseModal = (e) => {
+    if (e && e.target.id !== "overlay") {
+      return null;
+    }
     this.setState({ isModal: false });
   };
 
