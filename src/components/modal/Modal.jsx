@@ -18,7 +18,7 @@ export default class Modal extends Component {
   render() {
     const { onClose, children } = this.props;
     return (
-      <div id="overlay" className="Overlay" onClick={onClose}>
+      <div className="Overlay" onClick={onClose}>
         <div className="Modal">{children}</div>
       </div>
     );
